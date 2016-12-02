@@ -1,5 +1,5 @@
 var React = require('react');
-
+var {Link} = require('react-router');
 
 // Refactored with arrow functions
 // var Examples = React.createClass({
@@ -13,8 +13,18 @@ var React = require('react');
 var Examples = (props) => {
 	return (
 		<div>
-		<h3>Examples</h3>
-		<p>Welcome to Examples Page</p>
+			<h1 className='text-center'>Examples</h1>
+			
+			<p>Here are a few example locations to try out:</p>
+
+			<ol>
+				<li>
+					<Link to='/?location=New York'>New York, NY</Link>
+				</li>
+			  <li>
+					<Link to='/?location=Phiadelphia'>Phiadelphia, PA</Link>
+			  </li>
+			</ol>
 		</div>
 	);
 };
