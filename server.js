@@ -3,13 +3,17 @@ var express = require('express');
 
 // Create our app
 var app = express();
+
+// Constant port for Heroku/ 3000 becomes back up
 const PORT = process.env.PORT || 3000;
 
+// Redirects HTTPS traffic to HTTP
 app.use(function (req, res, next) {
-	if (req.headers['x-forwarded-proto'] === 'http') {
-		next();
-	}else {
+	// Only if its HTTPS do we want to redirect
+	if (req.headers['x-forwarded-proto'] === 'https') {
 		res.redirect('http://' + req.hostname + req.url);
+	}else {
+		next();
 	}
 });
 
